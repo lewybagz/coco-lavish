@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom animations */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.card-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.card-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+/* Card flip styles */
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Ensure smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Base styles */
+body {
+  @apply bg-earth-100 text-earth-500 antialiased;
+}
+
+/* Optional: Add custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-earth-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-coco-300 rounded-full hover:bg-coco-400 transition-colors;
+}
+
+@layer base {
+  /* Base Typography */
+  html {
+    @apply font-sans text-earth-500 antialiased;
+  }
+
+  /* Headings */
+  h1,
+  .h1 {
+    @apply font-serif font-bold text-heading-1 mb-6;
+  }
+
+  h2,
+  .h2 {
+    @apply font-serif font-bold text-heading-2 mb-5;
+  }
+
+  h3,
+  .h3 {
+    @apply font-serif font-bold text-heading-3 mb-4;
+  }
+
+  h4,
+  .h4 {
+    @apply font-serif font-semibold text-heading-4 mb-3;
+  }
+
+  /* Body Text */
+  p {
+    @apply font-sans text-body mb-4;
+  }
+
+  /* Large Body Text */
+  .text-lg {
+    @apply text-body-lg;
+  }
+
+  /* Small Text */
+  .text-sm {
+    @apply text-body-sm;
+  }
+
+  /* Links */
+  a {
+    @apply text-coco-400 hover:text-coco-500 transition-colors;
+  }
+}
+
+/* Additional utility classes */
+@layer utilities {
+  .text-display {
+    @apply font-serif font-bold;
+    font-size: 5.5rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+}
