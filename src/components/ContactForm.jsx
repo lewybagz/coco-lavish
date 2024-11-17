@@ -2,11 +2,25 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { Send, Check, AlertCircle } from "lucide-react";
+import CustomDropdown from "./CustomDropdown";
 
 const ContactForm = () => {
   const form = useRef();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
+
+  const scentOptions = [
+    { value: "", label: "Choose your scent..." },
+    { value: "african_shea", label: "African Shea Butter" },
+    { value: "mango", label: "Mango Butter" },
+    // Add all your options here
+  ];
+  const butterOptions = [
+    { value: "", label: "Choose your scent..." },
+    { value: "african_shea", label: "African Shea Butter" },
+    { value: "mango", label: "Mango Butter" },
+    // Add all your options here
+  ];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,7 +58,7 @@ const ContactForm = () => {
       <form
         ref={form}
         onSubmit={handleSubmit}
-        className="relative space-y-6 p-8 rounded-xl"
+        className="relative space-y-6 p-8 rounded-xl border border-coco-200"
       >
         {/* Name Input */}
         <motion.div
@@ -52,12 +66,17 @@ const ContactForm = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <label
-            className="block text-earth-500 mb-2 font-sans text-body-sm"
-            htmlFor="name"
-          >
-            Name
-          </label>
+          <div className="flex justify-between items-center mb-2">
+            <label
+              className="block text-earth-500 font-sans text-body-sm font-medium"
+              htmlFor="name"
+            >
+              Name*
+            </label>
+            <span className="font-sans text-body-sm text-earth-400 italic">
+              * indicates a required field
+            </span>
+          </div>
           <input
             type="text"
             id="name"
@@ -78,10 +97,10 @@ const ContactForm = () => {
           transition={{ delay: 0.1 }}
         >
           <label
-            className="block text-earth-500 mb-2 font-sans text-body-sm"
+            className="block text-earth-500 mb-2 font-sans text-body-sm font-medium"
             htmlFor="email"
           >
-            Email
+            Email*
           </label>
           <input
             type="email"
@@ -103,29 +122,44 @@ const ContactForm = () => {
           transition={{ delay: 0.15 }}
         >
           <label
-            className="block text-earth-500 mb-2 font-sans text-body-sm"
+            className="block text-earth-500 mb-2 font-sans text-body-sm font-medium"
             htmlFor="butter_choice"
           >
-            Select Butter Type
+            Select Butter Type*
           </label>
-          <select
-            id="butter_choice"
+          <CustomDropdown
+            options={butterOptions}
             name="butter_choice"
             required
-            className="w-full px-4 py-2 rounded-lg bg-white/50 border border-coco-200 
-             focus:outline-none focus:ring-2 focus:ring-coco-400 focus:border-transparent
-             text-earth-500 cursor-pointer font-sans text-body"
+            placeholder="Choose your scent..."
+            onChange={(e) => {
+              // Handle change if needed
+              console.log(e.target.value);
+            }}
+          />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.15 }}
+        >
+          <label
+            className="block text-earth-500 mb-2 font-sans text-body-sm font-medium"
+            htmlFor="butter_choice"
           >
-            <option value="" className="font-sans text-body">
-              Choose your butter...
-            </option>
-            <option value="african_shea" className="font-sans text-body">
-              African Shea Butter
-            </option>
-            <option value="mango" className="font-sans text-body">
-              Mango Butter
-            </option>
-          </select>
+            Select Scent*
+          </label>
+          <CustomDropdown
+            options={scentOptions}
+            name="scent_choice"
+            required
+            placeholder="Choose your scent..."
+            onChange={(e) => {
+              // Handle change if needed
+              console.log(e.target.value);
+            }}
+          />
         </motion.div>
 
         {/* Quantity Input */}
@@ -136,22 +170,70 @@ const ContactForm = () => {
           transition={{ delay: 0.2 }}
         >
           <label
-            className="block text-earth-500 mb-2 font-sans text-body-sm"
+            className="block text-earth-500 mb-2 font-sans text-body-sm font-medium"
             htmlFor="quantity"
           >
-            Quantity
+            Quantity*
           </label>
-          <input
-            type="number"
-            id="quantity"
-            name="quantity"
-            required
-            min="1"
-            className="w-full px-4 py-2 rounded-lg bg-white/50 border border-coco-200 
+          <div className="relative">
+            <input
+              type="number"
+              id="quantity"
+              name="quantity"
+              required
+              min="1"
+              className="w-full px-4 py-2 rounded-lg bg-white/50 border border-coco-200 
              focus:outline-none focus:ring-2 focus:ring-coco-400 focus:border-transparent
-             placeholder:text-earth-400 font-sans text-body placeholder:font-sans placeholder:text-body"
-            placeholder="Enter quantity"
-          />
+             placeholder:text-earth-400 font-sans text-body placeholder:font-sans placeholder:text-body pr-12"
+              placeholder="Enter quantity"
+            />
+            <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col gap-0.5 mr-3">
+              <motion.button
+                type="button"
+                onClick={() => {
+                  const input = document.getElementById("quantity");
+                  input.stepUp();
+                  input.dispatchEvent(new Event("change", { bubbles: true }));
+                }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="text-earth-500 hover:text-coco-400 transition-colors"
+              >
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M18 15l-6-6-6 6" />
+                </svg>
+              </motion.button>
+              <motion.button
+                type="button"
+                onClick={() => {
+                  const input = document.getElementById("quantity");
+                  if (input.value > 1) input.stepDown();
+                  input.dispatchEvent(new Event("change", { bubbles: true }));
+                }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="text-earth-500 hover:text-coco-400 transition-colors"
+              >
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </motion.button>
+            </div>
+          </div>
         </motion.div>
 
         {/* Additional Notes */}
@@ -162,7 +244,7 @@ const ContactForm = () => {
           transition={{ delay: 0.25 }}
         >
           <label
-            className="block text-earth-500 mb-2 font-sans text-body-sm"
+            className="block text-earth-500 mb-2 font-sans text-body-sm font-medium"
             htmlFor="message"
           >
             Additional Notes (Optional)

@@ -33,10 +33,16 @@ const IngredientCard = ({
             <img
               src={imageUrl}
               alt={name}
-              className="w-full h-full object-cover"
+              className={`w-full h-full ${
+                name === "Vitamin E" ||
+                name === "Almond Oil" ||
+                name === "Essential Oils"
+                  ? "object-contain p-4"
+                  : "object-cover"
+              }`}
             />
           </div>
-          <div className="p-4">
+          <div className="p-4 bg-gradient-to-br from-coco-200 to-nature-200">
             <h3 className="font-serif text-heading-4 font-semibold text-coco-500 mb-2">
               {name}
               {isButterOption && (

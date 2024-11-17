@@ -30,6 +30,12 @@ const Hero = () => {
           animation="slide"
           delay={0.8}
         />
+        <AnimatedText
+          text="Over 20 scents to choose from..."
+          className="text-body-lg font-sans text-earth-500 max-w-2xl"
+          animation="slide"
+          delay={2.5}
+        />
 
         <motion.div
           initial={{ opacity: 0 }}

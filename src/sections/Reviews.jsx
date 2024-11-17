@@ -10,7 +10,7 @@ const reviewsData = [
     rating: 5,
     review:
       "The coconut oil blend has transformed my hair care routine! My curls are more defined and moisturized than ever. Can't recommend enough!",
-    location: "Atlanta, GA",
+    location: "Gainesville, FL",
   },
   {
     name: "Brianna Quintero",
@@ -18,7 +18,7 @@ const reviewsData = [
     rating: 5,
     review:
       "I love how the shea butter option makes my skin feel. It's deeply moisturizing without being greasy. The natural scent is amazing too!",
-    location: "New York, NY",
+    location: "Tucson, AZ",
   },
   {
     name: "Alisha Clayton",
@@ -26,7 +26,7 @@ const reviewsData = [
     rating: 5,
     review:
       "Finally found my holy grail product! The almond oil blend has helped reduce my dark circles and the vitamin E keeps my skin looking young.",
-    location: "Miami, FL",
+    location: "Houston, TX",
   },
   {
     name: "Lauren Thompson",
