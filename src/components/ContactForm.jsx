@@ -11,8 +11,8 @@ const ContactForm = () => {
 
   const scentOptions = [
     { value: "", label: "Choose your scent..." },
-    { value: "african_shea", label: "African Shea Butter" },
-    { value: "mango", label: "Mango Butter" },
+    { value: "lavender", label: "Lavender" },
+    { value: "vanilla", label: "Vanilla" },
     // Add all your options here
   ];
   const butterOptions = [
@@ -22,18 +22,44 @@ const ContactForm = () => {
     // Add all your options here
   ];
 
+  const getDisplayValue = (value, options) => {
+    const option = options.find((opt) => opt.value === value);
+    return option ? option.label : value;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus(null);
 
+    const formData = new FormData(form.current);
+
+    // Transform the values before sending
+    const butter_display = getDisplayValue(
+      formData.get("butter_choice"),
+      butterOptions
+    );
+    const scent_display = getDisplayValue(
+      formData.get("scent_choice"),
+      scentOptions
+    );
+
+    // Create template params with display values
+    const templateParams = {
+      user_name: formData.get("user_name"),
+      user_email: formData.get("user_email"),
+      butter_choice: butter_display, // This will send "African Shea Butter" instead of "african_shea"
+      scent_choice: scent_display, // This will send "Lavender" instead of "lavender"
+      quantity: formData.get("quantity"),
+      message: formData.get("message"),
+    };
+
     try {
-      // Replace these with your EmailJS credentials
-      await emailjs.sendForm(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
-        form.current,
-        "YOUR_PUBLIC_KEY"
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
       setSubmitStatus("success");
       form.current.reset();

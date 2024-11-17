@@ -9,6 +9,7 @@ const IngredientCard = ({
   benefits,
   imageUrl,
   isButterOption = false,
+  isScentOption = false,
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
@@ -43,15 +44,30 @@ const IngredientCard = ({
             />
           </div>
           <div className="p-4 bg-gradient-to-br from-coco-200 to-nature-200">
-            <h3 className="font-serif text-heading-4 font-semibold text-coco-500 mb-2">
+            <h3
+              className={`font-serif ${
+                name === "African Shea/Mango Butter"
+                  ? "text-[1.4rem] p-0"
+                  : "text-heading-4"
+              } font-semibold text-coco-500 mb-2`}
+            >
               {name}
               {isButterOption && (
-                <span className="font-sans text-body-sm text-nature-400 ml-2">
-                  (Choice Available)
+                <span className="text-sm text-nature-400 ml-2">
+                  (Your Choice)
+                </span>
+              )}
+              {isScentOption && (
+                <span className="text-sm text-nature-400 ml-2">
+                  (Your Choice)
                 </span>
               )}
             </h3>
-            <p className="font-sans text-body text-earth-500 mb-4">
+            <p
+              className={`font-sans text-body text-earth-500 ${
+                name === "African Shea/Mango Butter" ? "mb-0" : "mb-4"
+              }`}
+            >
               {description}
             </p>
             <motion.div
@@ -105,10 +121,7 @@ IngredientCard.propTypes = {
   benefits: PropTypes.arrayOf(PropTypes.string).isRequired,
   imageUrl: PropTypes.string.isRequired,
   isButterOption: PropTypes.bool,
-};
-
-IngredientCard.defaultProps = {
-  isButterOption: false,
+  isScentOption: PropTypes.bool,
 };
 
 export default IngredientCard;

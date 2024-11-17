@@ -11,11 +11,11 @@ const Contact = () => {
       <div className="absolute -left-32 top-0 w-96 h-96 bg-coco-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob" />
       <div className="absolute -right-32 bottom-0 w-96 h-96 bg-nature-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-16">
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-10">
           {/* Title Section */}
           <div className="md:text-left text-center ml-8">
             <AnimatedText
-              text="Get In Touch"
+              text="Order Or Ask"
               className="text-5xl font-serif font-bold text-coco-500 mb-4" // Using direct text-5xl instead of text-display-2
               animation="bounce"
               delay={0.4}
@@ -27,7 +27,7 @@ const Contact = () => {
               delay={0.4}
             />
             <AnimatedText
-              text="Have questions?"
+              text="Have questions about our products?"
               className="font-sans text-xl text-earth-500" // Using direct text-xl instead of text-body-lg
               animation="fade"
               delay={0.7}
@@ -66,10 +66,10 @@ const Contact = () => {
             You can also reach us at:
           </p>
           <a
-            href="mailto:contact@cocalavish.com"
+            href="mailto:amp1535@gmail.com"
             className="font-sans text-base text-coco-400 hover:text-coco-500 transition-colors" // Using direct text-base instead of text-body
           >
-            contact@cocalavish.com
+            amp1535@gmail.com
           </a>
         </motion.div>
       </div>

@@ -4,11 +4,11 @@ import PropTypes from "prop-types";
 // Import the SVGs
 import cashappLogo from "../assets/cashapp-logo.svg";
 import applepayLogo from "../assets/applepay-logo.svg";
-
+import AnimatedText from "./AnimatedText";
 const PaymentMethods = ({ className = "" }) => {
   return (
     <motion.div
-      className={`flex flex-col items-center ${className}`}
+      className={`flex flex-col items-center ${className} bg-earth-200 p-6 pb-0 border border-coco-200 rounded-xl -mt-8`}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -49,6 +49,12 @@ const PaymentMethods = ({ className = "" }) => {
           </span>
         </motion.div>
       </div>
+      <AnimatedText
+        text="Order now, pay later"
+        className="font-sans text-body-sm text-earth-400 italic mt-2" // Using direct text-xl instead of text-body-lg
+        animation="fade"
+        delay={0.7}
+      />
     </motion.div>
   );
 };

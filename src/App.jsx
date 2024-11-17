@@ -75,6 +75,7 @@ function App() {
         "Customizable scents",
       ],
       imageUrl: essentialOils,
+      isScentOption: true,
     },
   ];
   return (
