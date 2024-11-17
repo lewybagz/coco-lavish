@@ -12,10 +12,6 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const isTitleHidden = useIntersectionObserver("hero-title");
 
-  useEffect(() => {
-    console.log("Title hidden:", isTitleHidden); // Debug log
-  }, [isTitleHidden]);
-
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {

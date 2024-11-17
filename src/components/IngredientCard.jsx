@@ -29,7 +29,7 @@ const IngredientCard = ({
         onClick={() => setIsFlipped(!isFlipped)}
       >
         {/* Front of card */}
-        <div className="card-face bg-earth-100 border-2 border-coco-300 shadow-lg rounded-xl overflow-hidden">
+        <div className="card-face bg-earth-100 border-2 border-coco-300 shadow-lg rounded-xl overflow-hidden flex flex-col h-full pb-0.1">
           <div className="h-48 overflow-hidden">
             <img
               src={imageUrl}
@@ -43,33 +43,31 @@ const IngredientCard = ({
               }`}
             />
           </div>
-          <div className="p-4 bg-gradient-to-br from-coco-200 to-nature-200">
-            <h3
-              className={`font-serif ${
-                name === "African Shea/Mango Butter"
-                  ? "text-[1.4rem] p-0"
-                  : "text-heading-4"
-              } font-semibold text-coco-500 mb-2`}
-            >
-              {name}
-              {isButterOption && (
-                <span className="text-sm text-nature-400 ml-2">
-                  (Your Choice)
-                </span>
-              )}
-              {isScentOption && (
-                <span className="text-sm text-nature-400 ml-2">
-                  (Your Choice)
-                </span>
-              )}
-            </h3>
-            <p
-              className={`font-sans text-body text-earth-500 ${
-                name === "African Shea/Mango Butter" ? "mb-0" : "mb-4"
-              }`}
-            >
-              {description}
-            </p>
+          <div className="p-4 bg-gradient-to-br from-coco-200 to-nature-200 flex flex-col justify-between flex-grow">
+            <div>
+              <h3
+                className={`font-serif ${
+                  name === "African Shea/Mango Butter"
+                    ? "text-[1.4rem] p-0"
+                    : "text-heading-4"
+                } font-semibold text-coco-500 mb-2`}
+              >
+                {name}
+                {isButterOption && (
+                  <span className="text-sm text-nature-400 ml-2">
+                    (Your Choice)
+                  </span>
+                )}
+                {isScentOption && (
+                  <span className="text-sm text-nature-400 ml-2">
+                    (Your Choice)
+                  </span>
+                )}
+              </h3>
+              <p className="font-sans text-body text-earth-500">
+                {description}
+              </p>
+            </div>
             <motion.div
               whileHover={{ scale: 1.1 }}
               className="flex items-center justify-center text-nature-400 gap-2"

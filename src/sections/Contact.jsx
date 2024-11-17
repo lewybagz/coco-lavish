@@ -45,7 +45,7 @@ const Contact = () => {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="md:mt-0 mt-8 mr-8"
+            className="flex justify-center md:justify-start mt-12 -mb-2 md:mt-0 md:mr-8"
           >
             <PaymentMethods />
           </motion.div>

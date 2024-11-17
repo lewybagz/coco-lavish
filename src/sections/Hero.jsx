@@ -2,6 +2,10 @@ import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { Link } from "react-scroll";
 import AnimatedText from "../components/AnimatedText";
+import heroImage from "../assets/hero-image.png";
+import heroImage2 from "../assets/hero-image2.png";
+import heroImage3 from "../assets/hero-image3.png";
+import PricingInfo from "../components/PricingInfo";
 
 const Hero = () => {
   return (
@@ -36,6 +40,8 @@ const Hero = () => {
           animation="slide"
           delay={2.5}
         />
+
+        <PricingInfo />
 
         <motion.div
           initial={{ opacity: 0 }}
@@ -91,6 +97,46 @@ const Hero = () => {
           ease: "linear",
         }}
       />
+      <motion.div
+        className="absolute bottom-10 right-10 hidden md:flex flex-col gap-6" // Added flex and gap for spacing
+      >
+        <motion.div
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 1.8 }}
+          className=" overflow-hidden" // Fixed dimensions
+        >
+          <img
+            src={heroImage3}
+            alt="CocoLavish Product"
+            className="w-full h-full object-cover rounded-tl-3xl"
+          />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 1.5 }}
+          className=" overflow-hidden"
+        >
+          <img
+            src={heroImage}
+            alt="CocoLavish Product"
+            className="w-full h-full object-cover rounded-tl-3xl"
+          />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
+          className=" overflow-hidden -mt-12"
+        >
+          <img
+            src={heroImage2}
+            alt="CocoLavish Product"
+            className="w-full h-full object-cover rounded-tl-3xl"
+          />
+        </motion.div>
+      </motion.div>
     </div>
   );
 };

@@ -33,26 +33,68 @@ export default {
       },
       fontSize: {
         "display-1": [
-          "5.5rem",
+          "3.5rem", // Mobile size
           { lineHeight: "1.1", letterSpacing: "-0.02em" },
-        ], // Increased from 4.5rem
+          {
+            md: "5.5rem", // Desktop size
+          },
+        ],
         "display-2": [
-          "4.5rem",
+          "3rem",
           { lineHeight: "1.1", letterSpacing: "-0.02em" },
-        ], // Increased from 3.75rem
+          {
+            md: "4.5rem",
+          },
+        ],
         "heading-1": [
-          "3.75rem",
-          { lineHeight: "1.2", letterSpacing: "-0.01em" },
-        ], // Increased from 3rem
-        "heading-2": [
           "2.75rem",
           { lineHeight: "1.2", letterSpacing: "-0.01em" },
-        ], // Increased from 2.25rem
-        "heading-3": ["2.25rem", { lineHeight: "1.2" }], // Increased from 1.875rem
-        "heading-4": ["1.875rem", { lineHeight: "1.2" }], // Increased from 1.5rem
-        "body-lg": ["1.375rem", { lineHeight: "1.6" }], // Increased from 1.125rem
-        body: ["1.125rem", { lineHeight: "1.6" }], // Increased from 1rem
-        "body-sm": ["1rem", { lineHeight: "1.5" }], // Increased from 0.875rem
+          {
+            md: "3.75rem",
+          },
+        ],
+        "heading-2": [
+          "2rem",
+          { lineHeight: "1.2", letterSpacing: "-0.01em" },
+          {
+            md: "2.75rem",
+          },
+        ],
+        "heading-3": [
+          "1.75rem",
+          { lineHeight: "1.2" },
+          {
+            md: "2.25rem",
+          },
+        ],
+        "heading-4": [
+          "1.5rem",
+          { lineHeight: "1.2" },
+          {
+            md: "1.875rem",
+          },
+        ],
+        "body-lg": [
+          "1.125rem",
+          { lineHeight: "1.6" },
+          {
+            md: "1.375rem",
+          },
+        ],
+        body: [
+          "1rem",
+          { lineHeight: "1.6" },
+          {
+            md: "1.125rem",
+          },
+        ],
+        "body-sm": [
+          "0.875rem",
+          { lineHeight: "1.5" },
+          {
+            md: "1rem",
+          },
+        ],
       },
     },
   },

@@ -59,27 +59,26 @@ const CustomDropdown = ({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="absolute z-50 w-full mt-1 bg-white/90 backdrop-blur-sm border border-coco-200 
-              rounded-lg shadow-lg max-h-[300px] overflow-y-auto"
+            className="absolute z-50 w-full mt-1 bg-earth-100 border border-coco-200
+      rounded-lg shadow-lg max-h-[300px] overflow-y-auto"
             role="listbox"
             tabIndex={-1}
           >
             {options.map((option) => (
-              <motion.li
+              <li
                 key={option.value}
                 onClick={() => handleSelect(option)}
                 className={`px-4 py-2 cursor-pointer font-sans text-body
-                  ${
-                    selectedValue === option.value
-                      ? "bg-coco-100 text-coco-500"
-                      : "text-earth-500 hover:bg-earth-100"
-                  }`}
+          ${
+            selectedValue === option.value
+              ? "bg-earth-200 text-coco-500"
+              : "text-earth-500 hover:bg-earth-200"
+          }`}
                 role="option"
                 aria-selected={selectedValue === option.value}
-                whileHover={{ backgroundColor: "rgba(0,0,0,0.05)" }}
               >
                 {option.label}
-              </motion.li>
+              </li>
             ))}
           </motion.ul>
         )}

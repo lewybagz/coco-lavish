@@ -2,11 +2,15 @@ import { motion } from "framer-motion";
 import ReviewCard from "../components/ReviewCard";
 import AnimatedText from "../components/AnimatedText";
 import PropTypes from "prop-types";
+import bq from "../assets/bq.jpg";
+import lp from "../assets/lp.jpeg";
+import ac from "../assets/ac.jpg";
+import lt from "../assets/lt.jpg";
 
 const reviewsData = [
   {
     name: "Lewis Patterson",
-    image: "", // Will add later
+    image: lp,
     rating: 5,
     review:
       "The coconut oil blend has transformed my hair care routine! My curls are more defined and moisturized than ever. Can't recommend enough!",
@@ -14,7 +18,7 @@ const reviewsData = [
   },
   {
     name: "Brianna Quintero",
-    image: "", // Will add later
+    image: bq,
     rating: 5,
     review:
       "I love how the shea butter option makes my skin feel. It's deeply moisturizing without being greasy. The natural scent is amazing too!",
@@ -22,7 +26,7 @@ const reviewsData = [
   },
   {
     name: "Alisha Clayton",
-    image: "", // Will add later
+    image: ac,
     rating: 5,
     review:
       "Finally found my holy grail product! The almond oil blend has helped reduce my dark circles and the vitamin E keeps my skin looking young.",
@@ -30,7 +34,7 @@ const reviewsData = [
   },
   {
     name: "Lauren Thompson",
-    image: "", // Will add later
+    image: lt,
     rating: 5,
     review:
       "The quality of these products is unmatched. I've tried the mango butter version and it's perfect for my sensitive skin. Worth every penny!",

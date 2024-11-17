@@ -7,7 +7,7 @@ import coconutImage from "./assets/coconut.png";
 import vitamine from "./assets/vitamine.png";
 import almondImage from "./assets/almond-oil.png";
 import essentialOils from "./assets/essential-oils.png";
-
+import sheaMango from "./assets/shea-mango.jpg";
 function App() {
   const ingredientsData = [
     {
@@ -47,7 +47,7 @@ function App() {
         "Natural UV protection",
         "Rich in vitamins A and E",
       ],
-      imageUrl: "/path-to-butter-image.jpg",
+      imageUrl: sheaMango,
       isButterOption: true,
     },
     {
@@ -79,7 +79,7 @@ function App() {
     },
   ];
   return (
-    <div className="relative min-h-screen bg-earth-100">
+    <div className="relative min-h-screen bg-earth-100 overflow-x-hidden">
       {/* Fixed Navbar */}
       <Navbar />
 

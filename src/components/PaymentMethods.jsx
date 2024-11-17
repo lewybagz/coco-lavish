@@ -53,7 +53,7 @@ const PaymentMethods = ({ className = "" }) => {
         text="Order now, pay later"
         className="font-sans text-body-sm text-earth-400 italic mt-2" // Using direct text-xl instead of text-body-lg
         animation="fade"
-        delay={0.7}
+        delay={1.0}
       />
     </motion.div>
   );

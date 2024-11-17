@@ -8,19 +8,31 @@ const ContactForm = () => {
   const form = useRef();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
+  const [selectedSize, setSelectedSize] = useState("");
+  const [quantity, setQuantity] = useState(1);
 
   const scentOptions = [
-    { value: "", label: "Choose your scent..." },
     { value: "lavender", label: "Lavender" },
     { value: "vanilla", label: "Vanilla" },
     // Add all your options here
   ];
   const butterOptions = [
-    { value: "", label: "Choose your scent..." },
     { value: "african_shea", label: "African Shea Butter" },
     { value: "mango", label: "Mango Butter" },
     // Add all your options here
   ];
+  const sizeOptions = [
+    { value: "0.6_OZ", label: "0.6 OZ - $6" },
+    { value: "3_OZ", label: "3 OZ - $15" },
+  ];
+
+  const calculateTotal = () => {
+    const prices = {
+      "0.6_OZ": 6,
+      "3_OZ": 15,
+    };
+    return selectedSize ? prices[selectedSize] * quantity : 0;
+  };
 
   const getDisplayValue = (value, options) => {
     const option = options.find((opt) => opt.value === value);
@@ -140,12 +152,47 @@ const ContactForm = () => {
           />
         </motion.div>
 
-        {/* Butter Choice Dropdown */}
+        {/* Size Choice Dropdown */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.15 }}
+        >
+          <label
+            className="block text-earth-500 mb-2 font-sans text-body-sm font-medium"
+            htmlFor="butter_choice"
+          >
+            Select Size*
+          </label>
+          <CustomDropdown
+            options={sizeOptions}
+            name="size_choice"
+            required
+            placeholder="Choose your size..."
+            onChange={(e) => {
+              setSelectedSize(e.target.value);
+            }}
+          />
+          {selectedSize && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="-mt-0.5 right-10"
+            >
+              <span className="font-sans text-xs text-earth-500 italic">
+                Please Place A Seperate Order If You&rsquo;d Like More Than One
+                Size
+              </span>
+            </motion.div>
+          )}
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.15 }}
+          className="!mt-4"
         >
           <label
             className="block text-earth-500 mb-2 font-sans text-body-sm font-medium"
@@ -157,7 +204,7 @@ const ContactForm = () => {
             options={butterOptions}
             name="butter_choice"
             required
-            placeholder="Choose your scent..."
+            placeholder="Choose your butter..."
             onChange={(e) => {
               // Handle change if needed
               console.log(e.target.value);
@@ -208,9 +255,11 @@ const ContactForm = () => {
               name="quantity"
               required
               min="1"
-              className="w-full px-4 py-2 rounded-lg bg-white/50 border border-coco-200 
-             focus:outline-none focus:ring-2 focus:ring-coco-400 focus:border-transparent
-             placeholder:text-earth-400 font-sans text-body placeholder:font-sans placeholder:text-body pr-12"
+              value={quantity}
+              onChange={(e) => setQuantity(Number(e.target.value))}
+              className="w-full px-4 py-2 rounded-lg bg-white/50 border border-coco-200
+   focus:outline-none focus:ring-2 focus:ring-coco-400 focus:border-transparent
+   placeholder:text-earth-400 font-sans text-body placeholder:font-sans placeholder:text-body pr-12"
               placeholder="Enter quantity"
             />
             <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col gap-0.5 mr-3">
@@ -260,6 +309,17 @@ const ContactForm = () => {
               </motion.button>
             </div>
           </div>
+          {selectedSize && quantity > 0 && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="absolute -mt-0.5 right-10"
+            >
+              <span className="font-sans text-body-sm text-earth-500 italic">
+                Total: ${calculateTotal().toFixed(2)}
+              </span>
+            </motion.div>
+          )}
         </motion.div>
 
         {/* Additional Notes */}
