@@ -66,10 +66,10 @@ const Contact = () => {
             You can also reach us at:
           </p>
           <a
-            href="mailto:contact@cocolavish.com"
+            href="mailto:amp1535@gmail.com"
             className="font-sans text-base text-coco-400 hover:text-coco-500 transition-colors" // Using direct text-base instead of text-body
           >
-            contact@cocolavish.com
+            amp1535@gmail.com
           </a>
         </motion.div>
       </div>
