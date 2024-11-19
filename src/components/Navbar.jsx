@@ -85,7 +85,7 @@ const Navbar = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.3 }}
-                  className="font-serif font-bold text-coco-400 text-3xl hidden md:block tracking-wide"
+                  className="font-serif font-bold text-coco-400 text-2xl md:text-3xl tracking-wide" // Changed text-xl to text-2xl
                 >
                   Cocalavish
                 </motion.span>
