@@ -26,6 +26,10 @@ export default {
           400: "#999485",
           500: "#666055",
         },
+        social: {
+          facebook: "#4267B2",
+          instagram: "#E1306C",
+        },
       },
       fontFamily: {
         serif: ["Cormorant Garamond", "serif"],

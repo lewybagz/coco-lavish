@@ -6,6 +6,7 @@ import heroImage from "../assets/hero-image.png";
 import heroImage2 from "../assets/hero-image2.png";
 import heroImage3 from "../assets/hero-image3.png";
 import PricingInfo from "../components/PricingInfo";
+import SocialLinks from "../components/SocialLinks";
 
 const Hero = () => {
   return (
@@ -41,7 +42,14 @@ const Hero = () => {
           delay={2.5}
         />
 
-        <PricingInfo />
+        <div className="flex items-center gap-4 w-full justify-start">
+          <div className="flex-1">
+            <PricingInfo />
+          </div>
+          <div className="flex-1">
+            <SocialLinks className="mt-0" />
+          </div>
+        </div>
 
         <motion.div
           initial={{ opacity: 0 }}
@@ -61,7 +69,7 @@ const Hero = () => {
               className="flex flex-col items-center"
             >
               <AnimatedText
-                text="Discover Our Products"
+                text="Our Premium Ingredients"
                 className="text-body font-sans text-nature-400 mb-2"
                 animation="fade"
                 delay={1.6}

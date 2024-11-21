@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import AnimatedText from "../components/AnimatedText";
 import ContactForm from "../components/ContactForm";
 import PaymentMethods from "../components/PaymentMethods";
-
+import SocialLinks from "../components/SocialLinks";
 const Contact = () => {
   return (
     <section id="contact" className="py-20 relative overflow-hidden">
@@ -54,6 +54,8 @@ const Contact = () => {
         <div className="flex justify-center">
           <ContactForm />
         </div>
+
+        <SocialLinks className="mt-12 mb-8" />
 
         {/* Contact Information */}
         <motion.div
