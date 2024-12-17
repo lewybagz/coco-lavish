@@ -74,7 +74,7 @@ const Navbar = () => {
               duration={500}
               className="cursor-pointer"
             >
-              <img src={logo} alt="Cocalavish Logo" className="h-20 w-auto" />
+              <img src={logo} alt="Cocolavish Logo" className="h-20 w-auto" />
             </Link>
 
             <AnimatePresence mode="wait">
@@ -87,7 +87,7 @@ const Navbar = () => {
                   transition={{ duration: 0.3 }}
                   className="font-serif font-bold text-coco-400 text-2xl md:text-3xl tracking-wide" // Changed text-xl to text-2xl
                 >
-                  Cocalavish
+                  Cocolavish
                 </motion.span>
               )}
             </AnimatePresence>
